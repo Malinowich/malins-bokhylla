@@ -1,4 +1,54 @@
-Titel;Författare ;Förlag/utgivare;Utgivningsår;Antal sidor;ISBN;Inköpspris;Inköpsdatum;Ämne;Placering;Status;Person som lånat;Media
-GRÖNA ARKIV – Med Linnés ögon och andras;Abukhanfusa, Kerstin;Riksarkivet.;2007;263;;;;KULTURHISTORIA;Hyllplan ?;I hyllan;;Häftad bok
-CLARAS TRÄDGÅRD – En hängiven nybörjares succ...;Block Hane, Clara;Bokförlaget DN.;2003;200;9789175884592;;;TRÄDGÅRD, ÖVRIGT;Hyllplan ?;I hyllan;;Inbunden bok 
-Krukväxtodling i bostadsrum;R. Christensen;;;;;75 SEK;;RUMSVÄXTER;Hyllplan ?;I hyllan;;Inbunden bok 
+Titel;Författare ;Ämne;Förlag/utgivare;Utgivningsår;Antal sidor;ISBN;Inköpspris;Inköpsdatum;Placering;Status;Person som lånat;Media;Inlagd;Katalognummer
+GRÖNA ARKIV – Med Linnés ögon och andras;Abukhanfusa, Kerstin;KULTURHISTORIA;Riksarkivet.;2007;263;;;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;1
+CLARAS TRÄDGÅRD – En hängiven nybörjares succ...;Block Hane, Clara;TRÄDGÅRD, ÖVRIGT;Bokförlaget DN.;2003;200;9789175884592;;;Hyllplan ?;I hyllan;;Inbunden bok ;2025-01-06;2
+Krukväxtodling i bostadsrum;R. Christensen;RUMSVÄXTER;;;;;75 SEK;;Hyllplan ?;I hyllan;;Inbunden bok ;2025-01-06;3
+KOMPOSTBOKEN;Ken Thompson;TRÄDGÅRD, ÖVRIGT;Prisma.;2008;192;ISBN 9789151850016;;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;4
+TRÄDGÅRDSKONSTER – Med utblick från höglandet;Londos, Eva;TRÄDGÅRD, ÖVRIGT;;1998;177;ISBN 9789172038264;;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;5
+BO MED BLOMMOR;Schubert, Margot;RUMSVÄXTER;;;;;;;Hyllplan ?;I hyllan;;;2025-01-06;6
+TRÄDGÅRD I STAN;Clevely, Andi;LITEN TRÄDGÅRD;;;;ISBN 9789137131849;;;Hyllplan ?;I hyllan;;;2025-01-06;7
+Konsten att beskära : träd och buskar;Robild, Eva;BESKÄRNING;;;;;299 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;8
+Konsten att väva : en praktisk handbok;Pärson, Åsa;VÄVNING;;;;;;;Hyllplan ?;I hyllan;;;2025-01-06;9
+En liten trädgård;Reuterswärd, Gösta;LITEN TRÄDGÅRD;;;;;60 SEK;;Hyllplan ?;I hyllan;;Bok;2025-01-06;10
+Stadsgeografi. En introduktion;Johnson, James H;TRÄDGÅRD, ÖVRIGT;;;;;60 SEK;;Hyllplan ?;I hyllan;;Pocketbok;2025-01-06;11
+Trädgården och Konsthantverket. En utställning på Rosendals Trädgård och Prins Eugens Waldemarsudde;Bengtsson, Cecilia m fl;TRÄDGÅRD, ÖVRIGT;;;;;130 SEK;;Hyllplan ?;I hyllan;;Bok;2025-01-06;12
+Perenna växter;Holzhausen, Axel;PERENNER;;;;;75 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;13
+Träd från hela världen;Procter, Ray;TRÄD;;;;;20 SEK;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;14
+Trädgårdens blommor;Holzhausen, Axel;PERENNER;;;;;75 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;15
+Trädgårdskonster : med utblick från höglandet;Londos, Eva - Bonis, Gabriella;TRÄDGÅRD, ÖVRIGT;Jönköpings läns museum;;;;;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;16
+Den stora julboken : [de bästa julidéerna 1999];Collatz, Lene - Danielsen, Hanne-Luise;JUL;;;;;30 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;17
+Den stora julboken : [de bästa julidéerna];Münch, Ingrid;JUL;;;;;20 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;18
+Förvaltning Del 1 utvändig skötsel;Riksbyggen;FÖRVALTNING;;;;;40 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;19
+Lättsydda småbarnskläder : 84-115 centilong : mönster och beskrivningar;Bäversten, Inger;SÖMNAD;;;;;80 SEK;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;20
+Vegetationen i tio bostadsområden;Bucht, Eivor - Statens institut för byggnadsforskning;TRÄDGÅRD, ÖVRIGT;;;;;;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;21
+Att hålla ordning på arter och släkten - en familjeangelägenhet. Om systematisk botanik förr och nu;Weimarck Gunnar;BOTANIK;;;;;45 SEK;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;22
+Nyttoväxter;Linnell Tore;NYTTOVÄXTER;;;;;45 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;23
+På spaning efter växandets punkt. Handbok i praktisk pedagogik;Wahl Mats;PEDAGOGIK;;;;;45 SEK;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;24
+Stadsbyggnad och dess konstnärliga grundsatser. Ett bidrag till dagens frågor rörande arkitektur och monumental skulptur med särskild syftning på Wien;Camillo Sitte. I översättning och med kommentarer av Göran Sidenbladh;STADSBYGGNAD;;;;;290 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;25
+The Illustrated Guide of Cacti;Slaba Rudolf;KAKTUSAR;;;;;55 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;26
+Träd och buskar vid Medelhavet;Vedel Helge (text) & Als Roald & Rasmussen Anette (bild);TRÄD;;;;;50 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;27
+Trädgårdsbotanik. Praktisk handledning för amatörer och yrkesmän;Sörlin Anton;BOTANIK;;;;;60 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;28
+Vårflor i trädgården;Loménius Ernst;VÅR;;;;;49 SEK;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;29
+Växtsamhällen. 20 naturtyper från havsstrand till kalfjäll.;Bülow-Olsen Anne;STÅNDORT;;;;;;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;30
+Garden History - Philosophy and Design 2000 BC-2000AD;Turner, Tom;TRÄDGÅRDSHISTORIA;;;;;240 SEK;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;31
+Kinesisk trädgård;Elisabeth Svalin;TRÄDGÅRDSHISTORIA;;;;;80 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;32
+Våra kulturväxters namn på svenska och latin;Hylander, Nils mfl;KULTURHISTORIA;;;;;112 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;33
+Den otröstliga ögontrösten : växterna som kulturarv;Lindberg, Gunilla - Stenberg, Gunnel;KULTURHISTORIA;;;;;71 SEK;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;34
+Önsketrädgård för alla : fem trädgårdsarkitekter planerar din tomt: Sven-Ingvar Andersson;Högström, Martha;TRÄDGÅRDSDESIGN;;;;;83 SEK;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;35
+Småråd för hus och hem;Märta Stjernstedt;;;;;;57 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;36
+Sommarblommor och lökväxter;Tingdal, Britta - Tingdal, Britta - Watz, Janet;SOMMARBLOMMOR;;;;;28 SEK;;Hyllplan ?;I hyllan;;Bok;2025-01-06;37
+Träd;Lars Imby - David More;TRÄD;;;;;114 SEK;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;38
+Nudging i praktiken : så gör organisationen det lätt att göra rätt;Lemoine, Ida;;;;;;120 SEK;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;39
+Quick & Easy Wrapping. Enchanting gifts;Yoshiko Hase;PAKETINSLAGNING;;;;;30 SEK;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;40
+Supersurfaces;Sophia Vyzoviti;;;;;;30 SEK;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;41
+Varför klätterväxter?;Karin Gullberg, Kerstin Teutsch;KLÄTTERVÄXTER;;;;;60 SEK;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;42
+Blommor & grönska på kyrkogården;Alm, Gustaf - Klein, Stig - Fonus;KYRKOGÅRD;;;;;50 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;43
+En vintergrön trädgård;Torsten Hammarstrand;VINTER;;;;;69 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;44
+Husboken trädgården;Hermansson, Nils - Engelbrektson, Sören;;;;;;40 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;45
+Maryhill : en trädgård i Lund;Möller, Lotte;TRÄDGÅRDSPLATSER;;;;;98 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;46
+Odla barrväxter;Brita Johansson;BARRVÄXTER;;;;;80 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;47
+Trädgårdens vackraste blommor;Tor Nitzelius;PERENNER;;;;;69 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;48
+The Gardeners Essential Gertrude Jekyll;Gertrude Jekyll;TRÄDGÅRDSDESIGN;;;;;140 SEK;;Hyllplan ?;I hyllan;;Pocketbok;2025-01-06;49
+Colour in the Flower Garden;Gertrude Jekyll;TRÄDGÅRDSDESIGN;;;;;100 SEK;;Hyllplan ?;I hyllan;;Pocketbok;2025-01-06;50
+Den gröna labyrinten labyrinter i trädgårdar och i människans historia;Svalin Gunnarsson, Elisabeth;TRÄDGÅRDSHISTORIA;;;;;70 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;51
+En bok om trädgårdar - Tomtval, idéritningar, trädgårdsdetaljer;Martinsson, Gunnar;TRÄDGÅRDSDESIGN;;;;;700 SEK;;Hyllplan ?;I hyllan;;Inbunden bok;2025-01-06;52
+Träd i bebyggelse;Bucht, Eivor;TRÄD;;;;;;;Hyllplan ?;I hyllan;;Häftad bok;2025-01-06;53
