@@ -2,30 +2,168 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
-  <title>TEST – Malins bokhylla</title>
+  <title>Malins bokhylla</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Arial, sans-serif;
+      background: #f2f4f7;
+      margin: 0;
+      padding: 24px;
+      color: #1f2937;
+    }
+
+    h1 { margin-bottom: 6px; }
+    .intro { color: #4b5563; margin-bottom: 16px; }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    input, select {
+      padding: 10px 12px;
+      font-size: 15px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      min-width: 220px;
+    }
+
+    .count {
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .kort {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .titel { font-size: 18px; font-weight: 600; }
+    .forfattare { font-size: 14px; color: #6b7280; margin-bottom: 10px; }
+
+    .info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 6px 16px;
+      font-size: 14px;
+    }
+
+    .etikett { font-weight: 500; color: #374151; }
+
+    .status {
+      margin-top: 12px;
+      font-weight: 600;
+    }
+
+    .utlanad { color: #b91c1c; }
+    .tillganglig { color: #15803d; }
+  </style>
 </head>
 <body>
 
-<h1>TEST: laddar CSV</h1>
-<div id="out">Startar…</div>
+<h1>📚 Malins bokhylla</h1>
+<div class="intro">
+  Sök bland titlar, författare, ämnen, ISBN och se vad som är utlånat.
+</div>
+
+<div class="filters">
+  <input id="search" placeholder="Sök…" onkeyup="applyFilters()">
+
+  <select id="filterAmne" onchange="applyFilters()">
+    <option value="">Alla ämnen</option>
+  </select>
+
+  <select id="filterStatus" onchange="applyFilters()">
+    <option value="">Alla statusar</option>
+    <option value="tillgänglig">Tillgänglig</option>
+    <option value="utlånad">Utlånad</option>
+  </select>
+</div>
+
+<div id="count" class="count"></div>
+<div id="resultat">Laddar data…</div>
 
 <script>
 const RAW_CSV_URL =
   "https://raw.githubusercontent.com/malinowich/malins-bokhylla/main/docs/data.csv";
 
+let data = [];
+
+// Ladda CSV
 fetch(RAW_CSV_URL)
   .then(r => r.text())
   .then(text => {
-    const rows = text.trim().split("\n");
-    const parsed = rows.slice(1,6).map(r => r.split(";"));
-
-    document.getElementById("out").innerHTML =
-      "<pre>" + JSON.stringify(parsed, null, 2) + "</pre>";
+    const rows = text.trim().split("\n").slice(1);
+    data = rows.map(r => r.split(";")).filter(r => r.length >= 15);
+    buildAmneFilter();
+    applyFilters();
   })
-  .catch(err => {
-    document.getElementById("out").innerText =
-      "FEL: " + err;
+  .catch(() => {
+    document.getElementById("resultat").innerText =
+      "Kunde inte ladda data.csv";
   });
+
+function buildAmneFilter() {
+  const amnen = [...new Set(data.map(r => r[2]).filter(Boolean))].sort();
+  const sel = document.getElementById("filterAmne");
+  amnen.forEach(a => {
+    const o = document.createElement("option");
+    o.value = a;
+    o.textContent = a;
+    sel.appendChild(o);
+  });
+}
+
+function applyFilters() {
+  const q = document.getElementById("search").value.toLowerCase();
+  const amne = document.getElementById("filterAmne").value;
+  const status = document.getElementById("filterStatus").value;
+
+  const filtered = data.filter(r =>
+    r.join(" ").toLowerCase().includes(q) &&
+    (!amne || r[2] === amne) &&
+    (!status || r[10].toLowerCase().includes(status))
+  );
+
+  render(filtered);
+}
+
+function render(rows) {
+  document.getElementById("count").innerText =
+    `Visar ${rows.length} av ${data.length} poster`;
+
+  document.getElementById("resultat").innerHTML =
+    rows.map(r => `
+      <div class="kort">
+        <div class="titel">${r[0]}</div>
+        <div class="forfattare">${r[1]}</div>
+
+        <div class="info">
+          <div><span class="etikett">Ämne:</span> ${r[2]}</div>
+          <div><span class="etikett">Media:</span> ${r[12]}</div>
+          <div><span class="etikett">Placering:</span> ${r[9]}</div>
+          <div><span class="etikett">ISBN:</span> ${r[6]}</div>
+          <div><span class="etikett">Katalognr:</span> ${r[14]}</div>
+        </div>
+
+        <div class="status ${
+          r[10].toLowerCase().includes("utlånad")
+            ? "utlanad"
+            : "tillganglig"
+        }">
+          ${r[10]} ${r[11] ? " – " + r[11] : ""}
+        </div>
+      </div>
+    `).join("");
+}
 </script>
 
 </body>
