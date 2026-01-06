@@ -22,7 +22,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 24px;
+      margin-bottom: 12px;
     }
 
     input, select {
@@ -31,6 +31,11 @@
       border-radius: 8px;
       border: 1px solid #d1d5db;
       min-width: 220px;
+    }
+
+    .count {
+      margin-bottom: 16px;
+      font-weight: 500;
     }
 
     button {
@@ -109,6 +114,9 @@
     </select>
   </div>
 
+  <!-- 🔢 ANTAL TRÄFFAR -->
+  <div id="count" class="count"></div>
+
   <div id="resultat">Laddar data…</div>
 </div>
 
@@ -116,7 +124,7 @@
 const PASSWORD = "DITT_LÖSENORD";
 let data = [];
 
-// login
+// 🔐 login
 function checkPassword() {
   if (document.getElementById("password").value === PASSWORD) {
     sessionStorage.setItem("ok", "true");
@@ -134,7 +142,7 @@ if (sessionStorage.getItem("ok") === "true") {
   loadData();
 }
 
-// load csv (semikolon)
+// 📄 load csv (semikolon)
 function loadData() {
   fetch("data.csv")
     .then(r => r.text())
@@ -146,7 +154,7 @@ function loadData() {
     });
 }
 
-// build ämne-filter
+// 🔽 build ämne-filter
 function buildAmneFilter() {
   const amnen = [...new Set(data.map(r => r[2]).filter(Boolean))].sort();
   const select = document.getElementById("filterAmne");
@@ -158,7 +166,7 @@ function buildAmneFilter() {
   });
 }
 
-// apply all filters
+// 🔍 apply all filters
 function applyFilters() {
   const q = document.getElementById("search").value.toLowerCase();
   const amne = document.getElementById("filterAmne").value;
@@ -174,8 +182,11 @@ function applyFilters() {
   render(filtered);
 }
 
-// render cards
+// 🖼 render cards + count
 function render(rows) {
+  document.getElementById("count").innerText =
+    `Visar ${rows.length} av ${data.length} poster`;
+
   document.getElementById("resultat").innerHTML =
     rows.map(r => `
       <div class="kort">
@@ -190,7 +201,11 @@ function render(rows) {
           <div><span class="etikett">Katalognr:</span> ${r[14]}</div>
         </div>
 
-        <div class="status ${r[10].toLowerCase().includes("utlånad") ? "utlanad" : "tillganglig"}">
+        <div class="status ${
+          r[10].toLowerCase().includes("utlånad")
+            ? "utlanad"
+            : "tillganglig"
+        }">
           ${r[10]} ${r[11] ? " – " + r[11] : ""}
         </div>
       </div>
