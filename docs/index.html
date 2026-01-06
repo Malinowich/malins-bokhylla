@@ -144,7 +144,7 @@ if (sessionStorage.getItem("ok") === "true") {
 
 // 📄 load csv (semikolon)
 function loadData() {
-  fetch("data.csv")
+  fetch("https://raw.githubusercontent.com/malinowich/malins-bokhylla/main/docs/data.csv")
     .then(r => r.text())
     .then(text => {
       const rows = text.trim().split("\n").slice(1);
