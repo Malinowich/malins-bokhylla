@@ -143,7 +143,10 @@ function loadData() {
     .then(r => r.text())
     .then(text => {
       const rows = text.trim().split("\n").slice(1);
-      data = rows.map(r => r.split(";"));
+      data = rows
+  .map(r => r.split(";"))
+  .filter(r => r.length >= 15);
+
       buildAmneFilter();
       applyFilters();
     })
