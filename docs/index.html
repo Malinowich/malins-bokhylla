@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -16,37 +15,32 @@
       color: #1f2937;
     }
 
-    h1 {
-      margin-bottom: 8px;
+    h1 { margin-bottom: 6px; }
+    .intro { color: #4b5563; margin-bottom: 16px; }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
     }
 
-    .intro {
-      color: #4b5563;
-      margin-bottom: 20px;
-    }
-
-    input {
-      padding: 12px 14px;
-      width: 100%;
-      max-width: 520px;
-      font-size: 16px;
+    input, select {
+      padding: 10px 12px;
+      font-size: 15px;
       border-radius: 8px;
       border: 1px solid #d1d5db;
-      margin-bottom: 20px;
+      min-width: 220px;
     }
 
     button {
-      padding: 12px 16px;
-      font-size: 16px;
+      padding: 10px 14px;
+      font-size: 15px;
       border-radius: 8px;
       border: none;
       background: #2563eb;
       color: white;
       cursor: pointer;
-    }
-
-    button:hover {
-      background: #1d4ed8;
     }
 
     .kort {
@@ -57,16 +51,8 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
 
-    .titel {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .forfattare {
-      font-size: 14px;
-      color: #6b7280;
-      margin-bottom: 12px;
-    }
+    .titel { font-size: 18px; font-weight: 600; }
+    .forfattare { font-size: 14px; color: #6b7280; margin-bottom: 10px; }
 
     .info {
       display: grid;
@@ -75,99 +61,121 @@
       font-size: 14px;
     }
 
-    .etikett {
-      font-weight: 500;
-      color: #374151;
-    }
+    .etikett { font-weight: 500; color: #374151; }
 
     .status {
-      margin-top: 14px;
+      margin-top: 12px;
       font-weight: 600;
     }
 
     .utlanad { color: #b91c1c; }
     .tillganglig { color: #15803d; }
 
-    /* dolda delar */
     #content { display: none; }
   </style>
 </head>
 <body>
 
-<!-- 🔐 LÖSENORD -->
+<!-- 🔐 LOGIN -->
 <div id="login">
   <h1>🔐 Malins bokhylla</h1>
-  <div class="intro">Ange lösenord för att fortsätta</div>
-
-  <input
-    type="password"
-    id="password"
-    placeholder="Lösenord"
-    onkeydown="if(event.key==='Enter') checkPassword()"
-  >
-  <br>
+  <div class="intro">Ange lösenord</div>
+  <input type="password" id="password">
+  <br><br>
   <button onclick="checkPassword()">Logga in</button>
 </div>
 
-<!-- 📚 INNEHÅLL -->
+<!-- 📚 CONTENT -->
 <div id="content">
-
   <h1>📚 Malins bokhylla</h1>
-  <div class="intro">
-    Sök bland titlar, författare, ämnen, ISBN och se vad som är utlånat.
+  <div class="intro">Sök och filtrera i bokhyllan</div>
+
+  <div class="filters">
+    <input
+      type="text"
+      id="search"
+      placeholder="Sök titel, författare, ISBN…"
+      onkeyup="applyFilters()"
+    >
+
+    <select id="filterAmne" onchange="applyFilters()">
+      <option value="">Alla ämnen</option>
+    </select>
+
+    <select id="filterStatus" onchange="applyFilters()">
+      <option value="">Alla statusar</option>
+      <option value="tillgänglig">Tillgänglig</option>
+      <option value="utlånad">Utlånad</option>
+    </select>
   </div>
 
-  <input
-    type="text"
-    id="search"
-    placeholder="Skriv för att söka…"
-    onkeyup="filterData()"
-  >
-
   <div id="resultat">Laddar data…</div>
-
 </div>
 
 <script>
-const PASSWORD = "Hibiskus"; // ← ÄNDRA HÄR
+const PASSWORD = "DITT_LÖSENORD";
 let data = [];
 
-// kontrollera lösenord
+// login
 function checkPassword() {
-  const input = document.getElementById("password").value;
-  if (input === PASSWORD) {
+  if (document.getElementById("password").value === PASSWORD) {
+    sessionStorage.setItem("ok", "true");
     document.getElementById("login").style.display = "none";
     document.getElementById("content").style.display = "block";
-    sessionStorage.setItem("ok", "true");
     loadData();
   } else {
     alert("Fel lösenord");
   }
 }
 
-// behåll inloggning under sessionen
 if (sessionStorage.getItem("ok") === "true") {
   document.getElementById("login").style.display = "none";
   document.getElementById("content").style.display = "block";
   loadData();
 }
 
-// ladda CSV (semikolon)
+// load csv (semikolon)
 function loadData() {
   fetch("data.csv")
     .then(r => r.text())
     .then(text => {
       const rows = text.trim().split("\n").slice(1);
       data = rows.map(r => r.split(";"));
-      visa(data);
-    })
-    .catch(() => {
-      document.getElementById("resultat").innerText =
-        "Kunde inte ladda data.csv";
+      buildAmneFilter();
+      applyFilters();
     });
 }
 
-function visa(rows) {
+// build ämne-filter
+function buildAmneFilter() {
+  const amnen = [...new Set(data.map(r => r[2]).filter(Boolean))].sort();
+  const select = document.getElementById("filterAmne");
+  amnen.forEach(a => {
+    const opt = document.createElement("option");
+    opt.value = a;
+    opt.textContent = a;
+    select.appendChild(opt);
+  });
+}
+
+// apply all filters
+function applyFilters() {
+  const q = document.getElementById("search").value.toLowerCase();
+  const amne = document.getElementById("filterAmne").value;
+  const status = document.getElementById("filterStatus").value;
+
+  const filtered = data.filter(r => {
+    const matchText = r.join(" ").toLowerCase().includes(q);
+    const matchAmne = !amne || r[2] === amne;
+    const matchStatus = !status || r[10].toLowerCase().includes(status);
+    return matchText && matchAmne && matchStatus;
+  });
+
+  render(filtered);
+}
+
+// render cards
+function render(rows) {
   document.getElementById("resultat").innerHTML =
     rows.map(r => `
       <div class="kort">
@@ -175,34 +183,18 @@ function visa(rows) {
         <div class="forfattare">${r[1]}</div>
 
         <div class="info">
+          <div><span class="etikett">Ämne:</span> ${r[2]}</div>
           <div><span class="etikett">Media:</span> ${r[12]}</div>
-          <div><span class="etikett">Förlag:</span> ${r[2]}</div>
-          <div><span class="etikett">Utgivningsår:</span> ${r[3]}</div>
-          <div><span class="etikett">Sidor:</span> ${r[4]}</div>
-          <div><span class="etikett">ISBN:</span> ${r[5]}</div>
-          <div><span class="etikett">Ämne:</span> ${r[8]}</div>
           <div><span class="etikett">Placering:</span> ${r[9]}</div>
+          <div><span class="etikett">ISBN:</span> ${r[6]}</div>
+          <div><span class="etikett">Katalognr:</span> ${r[14]}</div>
         </div>
 
-        <div class="status ${
-          r[10].toLowerCase().includes("utlånad")
-            ? "utlanad"
-            : "tillganglig"
-        }">
-          ${r[10]}
-          ${r[11] ? " – " + r[11] : ""}
+        <div class="status ${r[10].toLowerCase().includes("utlånad") ? "utlanad" : "tillganglig"}">
+          ${r[10]} ${r[11] ? " – " + r[11] : ""}
         </div>
       </div>
     `).join("");
-}
-
-function filterData() {
-  const q = document.getElementById("search").value.toLowerCase();
-  visa(
-    data.filter(r =>
-      r.join(" ").toLowerCase().includes(q)
-    )
-  );
 }
 </script>
 
